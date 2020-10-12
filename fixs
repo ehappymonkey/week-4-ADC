@@ -37,14 +37,16 @@ if __name__ == "__main__":
 led_pin = 37
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(led_pin, GPIO.OUT)
+GPIO.setwarnings(False)
+
 pwm = GPIO.PWM(37, 80)
 pwm.start(0)
 try:
 	while True:
 		print 'AIN0 = ', read(0)
-    pwm.ChangeDutyCycle(read(0
-    
-    
-    ))
+    pwm.ChangeDutyCycle(read(0))
+    x = read(0)
+    if x > 10:
+        pwm.ChangeDutyCycle(x)
 except KeyboardInterrupt:
     GPIO.cleanup()
